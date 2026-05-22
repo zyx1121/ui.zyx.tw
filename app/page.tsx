@@ -20,7 +20,7 @@ export default function Home() {
           </code>
         </div>
 
-        <div className="rounded-lg border border-foreground/10 p-8">
+        <div className="rounded-xl bg-block p-8">
           <div className="flex flex-wrap items-center gap-3">
             <Button>Default</Button>
             <Button variant="outline">Outline</Button>
