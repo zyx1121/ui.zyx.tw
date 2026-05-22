@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
+import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
 import { Hero } from "@/registry/blocks/hero"
 
@@ -66,6 +67,22 @@ export default function Home() {
               Trigger async
             </Button>
           </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-lg font-medium">Badge</h2>
+          <code className="text-xs text-foreground/60">
+            bunx shadcn@latest add @zyx1121/badge
+          </code>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="outline">Outline</Badge>
+          <Badge variant="destructive">Destructive</Badge>
         </div>
       </section>
 

@@ -19,6 +19,21 @@
       ]
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Pill badge — default, secondary, outline, destructive. Token-driven, dark mode safe.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
       "name": "hero",
       "type": "registry:block",
       "title": "Hero",
