@@ -32,7 +32,7 @@ Button and block live in the same scale on purpose — when a button sits inside
 Every item shipped in `registry.json` must satisfy:
 
 1. **Dark variant works** — uses `bg-foreground` / `bg-background` / `bg-block` tokens, never raw `bg-black` / `bg-white`. Toggling `.dark` on `<html>` flips cleanly.
-2. **Loading state present** — async-capable components expose `loading` (or `isPending`) prop. Visual: spinner or skeleton, `aria-busy="true"`, underlying interactive disabled.
+2. **Loading state present** *(async-capable only)* — interactive components that can trigger async work expose `loading` (or `isPending`) prop. Visual: spinner or skeleton, `aria-busy="true"`, underlying interactive disabled. Static blocks (`Hero`, `Section`) are exempt.
 3. **No border on blocks** — blocks lean on `--block` background for separation. Border on a block = drift back to Material; resist.
 4. **Reduced motion respected** — animations gated by `@media (prefers-reduced-motion: no-preference)` or `motion`'s built-in handling.
 

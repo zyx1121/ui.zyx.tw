@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
 import { Button } from "@/registry/ui/button"
+import { Hero } from "@/registry/blocks/hero"
 
 export default function Home() {
   const [loading, setLoading] = useState(false)
@@ -20,8 +21,8 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-24">
-      <header className="mb-16 flex items-start justify-between">
+    <main className="mx-auto max-w-2xl space-y-16 px-6 py-24">
+      <header className="flex items-start justify-between">
         <div>
           <h1 className="font-mono text-2xl font-semibold tracking-tight">
             ui.zyx.tw
@@ -40,7 +41,7 @@ export default function Home() {
         </Button>
       </header>
 
-      <section className="space-y-6">
+      <section className="space-y-4">
         <div className="flex items-baseline justify-between">
           <h2 className="text-lg font-medium">Button</h2>
           <code className="text-xs text-foreground/60">
@@ -66,6 +67,23 @@ export default function Home() {
             </Button>
           </div>
         </div>
+      </section>
+
+      <section className="space-y-4">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-lg font-medium">Hero</h2>
+          <code className="text-xs text-foreground/60">
+            bunx shadcn@latest add @zyx1121/hero
+          </code>
+        </div>
+
+        <Hero
+          title="Copy in, own outright."
+          description="A small registry of pieces I actually ship. Pill buttons, soft blocks, dark mode that just works."
+        >
+          <Button>Get started</Button>
+          <Button variant="outline">Read source</Button>
+        </Hero>
       </section>
     </main>
   )

@@ -17,6 +17,21 @@
           "target": "components/ui/button.tsx"
         }
       ]
+    },
+    {
+      "name": "hero",
+      "type": "registry:block",
+      "title": "Hero",
+      "description": "Section-scaled hero — bg-block, rounded-xl, no border. Composes Button for actions.",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/blocks/hero.tsx",
+          "type": "registry:block",
+          "target": "components/blocks/hero.tsx"
+        }
+      ]
     }
   ]
 }
