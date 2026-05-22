@@ -5,7 +5,6 @@ import { Moon, Sun } from "lucide-react"
 
 import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
-import { Hero } from "@/registry/blocks/hero"
 
 export default function Home() {
   const [loading, setLoading] = useState(false)
@@ -84,23 +83,6 @@ export default function Home() {
           <Badge variant="outline">Outline</Badge>
           <Badge variant="destructive">Destructive</Badge>
         </div>
-      </section>
-
-      <section className="space-y-4">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-lg font-medium">Hero</h2>
-          <code className="text-xs text-foreground/60">
-            bunx shadcn@latest add @zyx1121/hero
-          </code>
-        </div>
-
-        <Hero
-          title="Copy in, own outright."
-          description="A small registry of pieces I actually ship. Pill buttons, soft blocks, dark mode that just works."
-        >
-          <Button>Get started</Button>
-          <Button variant="outline">Read source</Button>
-        </Hero>
       </section>
     </main>
   )
