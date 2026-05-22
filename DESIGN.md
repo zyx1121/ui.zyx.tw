@@ -19,7 +19,8 @@ All radius tokens derive from `--radius`. Don't hardcode `rounded-[18px]` — pi
 | Utility | Multiplier | px @ `--radius: 1rem` | Use for |
 |---|---|---|---|
 | `rounded-sm` | 0.6× | 9.6px | inline chips, badges |
-| `rounded-md` | 0.8× | 12.8px | **buttons**, inputs, small surfaces |
+| `rounded-md` | 0.8× | 12.8px | inputs, small surfaces |
+| `rounded-full` | — | pill | **buttons** — pill shape, height-defined radius |
 | `rounded-lg` | 1.0× | 16px | cards, modal corners |
 | `rounded-xl` | 1.4× | 22.4px | **blocks / sections** |
 | `rounded-2xl` | 1.8× | 28.8px | hero containers, full-bleed feature blocks |
