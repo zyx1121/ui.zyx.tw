@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -12,20 +13,25 @@ const variants: Record<Variant, string> = {
 }
 
 const sizes: Record<Size, string> = {
-  default: "h-9 px-4 py-2",
+  default: "h-9 px-4",
   sm: "h-8 px-3 text-xs",
   lg: "h-10 px-6",
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant
   size?: Size
+  loading?: boolean
 }
 
 export function Button({
   className,
   variant = "default",
   size = "default",
+  loading = false,
+  disabled,
+  children,
   ...props
 }: ButtonProps) {
   return (
@@ -36,7 +42,17 @@ export function Button({
         sizes[size],
         className,
       )}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
       {...props}
-    />
+    >
+      {loading ? (
+        <Loader2
+          aria-hidden
+          className="size-4 motion-safe:animate-spin"
+        />
+      ) : null}
+      <span className={loading ? "opacity-70" : undefined}>{children}</span>
+    </button>
   )
 }

@@ -1,15 +1,43 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Moon, Sun } from "lucide-react"
+
 import { Button } from "@/registry/ui/button"
 
 export default function Home() {
+  const [loading, setLoading] = useState(false)
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark)
+  }, [dark])
+
+  const trigger = async () => {
+    setLoading(true)
+    await new Promise((r) => setTimeout(r, 1500))
+    setLoading(false)
+  }
+
   return (
     <main className="mx-auto max-w-2xl px-6 py-24">
-      <header className="mb-16">
-        <h1 className="font-mono text-2xl font-semibold tracking-tight">
-          ui.zyx.tw
-        </h1>
-        <p className="mt-2 text-sm text-foreground/60">
-          Loki's component registry. Copy in, own outright.
-        </p>
+      <header className="mb-16 flex items-start justify-between">
+        <div>
+          <h1 className="font-mono text-2xl font-semibold tracking-tight">
+            ui.zyx.tw
+          </h1>
+          <p className="mt-2 text-sm text-foreground/60">
+            Loki's component registry. Copy in, own outright.
+          </p>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setDark((d) => !d)}
+          aria-label="Toggle dark mode"
+        >
+          {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+        </Button>
       </header>
 
       <section className="space-y-6">
@@ -20,19 +48,22 @@ export default function Home() {
           </code>
         </div>
 
-        <div className="rounded-xl bg-block p-8">
+        <div className="space-y-6 rounded-xl bg-block p-8">
           <div className="flex flex-wrap items-center gap-3">
             <Button>Default</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button size="sm">Small</Button>
             <Button size="default">Default</Button>
             <Button size="lg">Large</Button>
           </div>
-          <div className="mt-6">
+          <div className="flex flex-wrap items-center gap-3">
             <Button disabled>Disabled</Button>
+            <Button loading={loading} onClick={trigger}>
+              Trigger async
+            </Button>
           </div>
         </div>
       </section>
