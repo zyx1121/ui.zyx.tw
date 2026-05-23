@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { Corner } from "@/registry/blocks/corner"
 import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
+import { Tooltip } from "@/registry/ui/tooltip"
 
 function ZyxLogo({ className }: { className?: string }) {
   return (
@@ -37,26 +38,37 @@ export default function Home() {
   return (
     <>
       <Corner at="top-left">
-        <div className="flex items-center gap-2 font-mono text-base font-semibold tracking-tight">
-          <ZyxLogo className="size-5" />
-          <span className="text-foreground/40">/</span>
-          <span>ui</span>
-        </div>
+        <Tooltip content="Loki's component registry" side="bottom">
+          <div className="flex items-center gap-2 font-mono text-base font-semibold tracking-tight">
+            <ZyxLogo className="size-5" />
+            <span className="text-foreground/40">/</span>
+            <span>ui</span>
+          </div>
+        </Tooltip>
       </Corner>
 
       <Corner at="top-right">
-        <Button
-          variant="raw"
-          onClick={() => setDark((d) => !d)}
-          aria-label="Toggle theme"
-          className="font-mono text-base"
+        <Tooltip
+          content={dark ? "Switch to light mode" : "Switch to dark mode"}
+          side="bottom"
         >
-          {dark ? "light" : "dark"}
-        </Button>
+          <Button
+            variant="raw"
+            onClick={() => setDark((d) => !d)}
+            aria-label="Toggle theme"
+            className="font-mono text-base"
+          >
+            {dark ? "light" : "dark"}
+          </Button>
+        </Tooltip>
       </Corner>
 
       <Corner at="bottom-right">
-        <span className="font-mono text-base text-foreground/50">© 2026</span>
+        <Tooltip content="© 2026 zyx1121" side="top">
+          <span className="font-mono text-base text-foreground/50">
+            © 2026
+          </span>
+        </Tooltip>
       </Corner>
 
       <main className="mx-auto w-full max-w-6xl space-y-16 px-6 pt-40 pb-32">
@@ -102,6 +114,27 @@ export default function Home() {
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="outline">Outline</Badge>
             <Badge variant="destructive">Destructive</Badge>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Tooltip</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/tooltip
+            </code>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
+            <Tooltip content="Default tooltip on top">
+              <Button variant="outline">Hover me</Button>
+            </Tooltip>
+            <Tooltip content="Bottom placement" side="bottom">
+              <Button variant="outline">Bottom</Button>
+            </Tooltip>
+            <Tooltip content="Right placement" side="right">
+              <Button variant="outline">Right</Button>
+            </Tooltip>
           </div>
         </section>
       </main>
