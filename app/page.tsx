@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
+import { Corner } from "@/registry/blocks/corner"
 import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
 
@@ -21,16 +22,17 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-6xl space-y-16 px-6 py-24">
-      <header className="flex items-start justify-between">
-        <div>
-          <h1 className="font-mono text-2xl font-semibold tracking-tight">
-            ui.zyx.tw
-          </h1>
-          <p className="mt-2 text-sm text-foreground/60">
-            Loki's component registry. Copy in, own outright.
-          </p>
-        </div>
+    <>
+      <Corner at="top-left">
+        <h1 className="font-mono text-2xl font-semibold tracking-tight">
+          ui.zyx.tw
+        </h1>
+        <p className="mt-2 text-sm text-foreground/60">
+          Loki's component registry. Copy in, own outright.
+        </p>
+      </Corner>
+
+      <Corner at="top-right">
         <Button
           variant="ghost"
           size="sm"
@@ -39,51 +41,59 @@ export default function Home() {
         >
           {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
         </Button>
-      </header>
+      </Corner>
 
-      <section className="space-y-4">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-lg font-medium">Button</h2>
-          <code className="text-xs text-foreground/60">
-            bunx shadcn@latest add @zyx1121/button
-          </code>
-        </div>
+      <Corner at="bottom-right">
+        <span className="font-mono text-xs text-foreground/50">
+          © 2026 zyx1121
+        </span>
+      </Corner>
 
-        <div className="space-y-6 rounded-xl bg-block p-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <Button>Default</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
+      <main className="mx-auto w-full max-w-6xl space-y-16 px-6 pt-40 pb-32">
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Button</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/button
+            </code>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button size="sm">Small</Button>
-            <Button size="default">Default</Button>
-            <Button size="lg">Large</Button>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button disabled>Disabled</Button>
-            <Button loading={loading} onClick={trigger}>
-              Trigger async
-            </Button>
-          </div>
-        </div>
-      </section>
 
-      <section className="space-y-4">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-lg font-medium">Badge</h2>
-          <code className="text-xs text-foreground/60">
-            bunx shadcn@latest add @zyx1121/badge
-          </code>
-        </div>
+          <div className="space-y-6 rounded-xl bg-block p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <Button>Default</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button size="sm">Small</Button>
+              <Button size="default">Default</Button>
+              <Button size="lg">Large</Button>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button disabled>Disabled</Button>
+              <Button loading={loading} onClick={trigger}>
+                Trigger async
+              </Button>
+            </div>
+          </div>
+        </section>
 
-        <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
-          <Badge>Default</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="outline">Outline</Badge>
-          <Badge variant="destructive">Destructive</Badge>
-        </div>
-      </section>
-    </main>
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Badge</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/badge
+            </code>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
+            <Badge>Default</Badge>
+            <Badge variant="secondary">Secondary</Badge>
+            <Badge variant="outline">Outline</Badge>
+            <Badge variant="destructive">Destructive</Badge>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }

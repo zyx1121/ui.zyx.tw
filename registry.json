@@ -32,6 +32,21 @@
           "target": "components/ui/badge.tsx"
         }
       ]
+    },
+    {
+      "name": "corner",
+      "type": "registry:block",
+      "title": "Corner",
+      "description": "Layout primitive — pin children to a viewport corner (top-left, top-right, bottom-left, bottom-right).",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/blocks/corner.tsx",
+          "type": "registry:block",
+          "target": "components/blocks/corner.tsx"
+        }
+      ]
     }
   ]
 }
