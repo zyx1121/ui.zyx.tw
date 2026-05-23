@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full space-y-16 px-6 py-24">
+    <main className="mx-auto w-full max-w-6xl space-y-16 px-6 py-24">
       <header className="flex items-start justify-between">
         <div>
           <h1 className="font-mono text-2xl font-semibold tracking-tight">
