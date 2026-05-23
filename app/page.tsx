@@ -45,14 +45,14 @@ export default function Home() {
       </Corner>
 
       <Corner at="top-right">
-        <Button
-          variant="ghost"
+        <button
+          type="button"
           onClick={() => setDark((d) => !d)}
           aria-label="Toggle theme"
-          className="font-mono text-base"
+          className="cursor-pointer font-mono text-base text-foreground/60 transition-colors hover:text-foreground"
         >
           {dark ? "light" : "dark"}
-        </Button>
+        </button>
       </Corner>
 
       <Corner at="bottom-right">
