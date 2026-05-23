@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Moon, Sun } from "lucide-react"
 
 import { Corner } from "@/registry/blocks/corner"
 import { Badge } from "@/registry/ui/badge"
@@ -38,8 +37,8 @@ export default function Home() {
   return (
     <>
       <Corner at="top-left">
-        <div className="flex items-center gap-2 font-mono text-2xl font-semibold tracking-tight">
-          <ZyxLogo className="size-7" />
+        <div className="flex items-center gap-2 font-mono text-base font-semibold tracking-tight">
+          <ZyxLogo className="size-5" />
           <span className="text-foreground/40">/</span>
           <span>ui</span>
         </div>
@@ -48,16 +47,16 @@ export default function Home() {
       <Corner at="top-right">
         <Button
           variant="ghost"
-          size="sm"
           onClick={() => setDark((d) => !d)}
-          aria-label="Toggle dark mode"
+          aria-label="Toggle theme"
+          className="font-mono text-base"
         >
-          {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+          {dark ? "light" : "dark"}
         </Button>
       </Corner>
 
       <Corner at="bottom-right">
-        <span className="font-mono text-xs text-foreground/50">© 2026</span>
+        <span className="font-mono text-base text-foreground/50">© 2026</span>
       </Corner>
 
       <main className="mx-auto w-full max-w-6xl space-y-16 px-6 pt-40 pb-32">
