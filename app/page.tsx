@@ -45,14 +45,14 @@ export default function Home() {
       </Corner>
 
       <Corner at="top-right">
-        <button
-          type="button"
+        <Button
+          variant="raw"
           onClick={() => setDark((d) => !d)}
           aria-label="Toggle theme"
-          className="cursor-pointer font-mono text-base text-foreground/60 transition-colors hover:text-foreground"
+          className="font-mono text-base"
         >
           {dark ? "light" : "dark"}
-        </button>
+        </Button>
       </Corner>
 
       <Corner at="bottom-right">
@@ -73,6 +73,7 @@ export default function Home() {
               <Button>Default</Button>
               <Button variant="outline">Outline</Button>
               <Button variant="ghost">Ghost</Button>
+              <Button variant="raw">Raw</Button>
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <Button size="sm">Small</Button>

@@ -3,13 +3,14 @@ import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-type Variant = "default" | "outline" | "ghost"
+type Variant = "default" | "outline" | "ghost" | "raw"
 type Size = "default" | "sm" | "lg"
 
 const variants: Record<Variant, string> = {
   default: "bg-foreground text-background hover:bg-foreground/90",
   outline: "border border-foreground/20 hover:bg-foreground/5",
   ghost: "hover:bg-foreground/5",
+  raw: "h-auto bg-transparent px-0 py-0 text-foreground/60 hover:bg-transparent hover:text-foreground",
 }
 
 const sizes: Record<Size, string> = {
@@ -38,8 +39,8 @@ export function Button({
     <button
       className={cn(
         "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-        variants[variant],
         sizes[size],
+        variants[variant],
         className,
       )}
       disabled={disabled || loading}
