@@ -75,6 +75,9 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 1rem;
+  --corner-shape: squircle;
+  --corner-shape-smooth: squircle;
+  --corner-shape-superellipse: superellipse(0.72);
   --block: oklch(0.97 0.004 85);
   --block-foreground: var(--foreground);
   --sidebar: oklch(0.985 0 0);
@@ -132,5 +135,23 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@utility corner-token {
+  @supports (corner-shape: squircle) {
+    corner-shape: var(--corner-shape);
+  }
+}
+
+@utility corner-smooth {
+  @supports (corner-shape: squircle) {
+    corner-shape: var(--corner-shape-smooth);
+  }
+}
+
+@utility corner-superellipse {
+  @supports (corner-shape: superellipse(0.72)) {
+    corner-shape: var(--corner-shape-superellipse);
   }
 }

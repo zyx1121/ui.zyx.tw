@@ -42,6 +42,22 @@ All radius tokens derive from `--radius`. Don't hardcode `rounded-[18px]` — pi
 
 Buttons/badges (pill) and surfaces (`rounded-xl`) form one visual family — when a button sits inside a surface the corners feel related, not random.
 
+## Smooth corner tokens
+
+Smooth corners are a progressive enhancement, not a replacement for the radius scale.
+
+- `--corner-shape: squircle` — default shape used by `corner-token`.
+- `--corner-shape-smooth: squircle` — explicit smooth utility.
+- `--corner-shape-superellipse: superellipse(0.72)` — stronger superellipse utility for experiments.
+
+Utilities:
+
+- `corner-token` — applies `corner-shape: var(--corner-shape)` when the browser supports `corner-shape`.
+- `corner-smooth` — applies `--corner-shape-smooth`.
+- `corner-superellipse` — applies `--corner-shape-superellipse`.
+
+Always pair these with an existing `rounded-*` utility. Browsers without `corner-shape` keep the normal `border-radius`, so the component must still look finished without the enhancement.
+
 ## Component contracts
 
 Every item shipped in `registry.json` must satisfy:

@@ -49,6 +49,66 @@
       ]
     },
     {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "Icon button for clipboard copy actions. Small, async-safe, and built on the registry Button.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ui/copy-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copy-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-command",
+      "type": "registry:ui",
+      "title": "Copy Command",
+      "description": "Token-driven command row with monospace text and a clipboard action. Use for shell snippets and install commands.",
+      "dependencies": [],
+      "registryDependencies": ["copy-button"],
+      "files": [
+        {
+          "path": "registry/ui/copy-command.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copy-command.tsx"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "description": "Compact one-of-many control for modes, locales, and small view switches. Token-driven and keyboard-focusable.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/segmented-control.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/segmented-control.tsx"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Small data table primitive with token dividers and a block background container.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/table.tsx"
+        }
+      ]
+    },
+    {
       "name": "corner",
       "type": "registry:block",
       "title": "Corner",
@@ -60,6 +120,36 @@
           "path": "registry/blocks/corner.tsx",
           "type": "registry:block",
           "target": "components/blocks/corner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "type": "registry:block",
+      "title": "Surface",
+      "description": "Layout primitive — soft block surface using bg-block, token radius, and no border.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/blocks/surface.tsx",
+          "type": "registry:block",
+          "target": "components/blocks/surface.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container",
+      "type": "registry:block",
+      "title": "Container",
+      "description": "Layout primitive — centered responsive page width with shared horizontal padding.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/blocks/container.tsx",
+          "type": "registry:block",
+          "target": "components/blocks/container.tsx"
         }
       ]
     }

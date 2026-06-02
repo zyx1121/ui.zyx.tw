@@ -2,9 +2,22 @@
 
 import { useEffect, useState } from "react"
 
+import { Container } from "@/registry/blocks/container"
 import { Corner } from "@/registry/blocks/corner"
+import { Surface } from "@/registry/blocks/surface"
 import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
+import { CopyButton } from "@/registry/ui/copy-button"
+import { CopyCommand } from "@/registry/ui/copy-command"
+import { SegmentedControl } from "@/registry/ui/segmented-control"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/ui/table"
 import { Tooltip } from "@/registry/ui/tooltip"
 
 function ZyxLogo({ className }: { className?: string }) {
@@ -24,6 +37,7 @@ function ZyxLogo({ className }: { className?: string }) {
 export default function Home() {
   const [loading, setLoading] = useState(false)
   const [dark, setDark] = useState(false)
+  const [segment, setSegment] = useState("shell")
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark)
@@ -71,7 +85,8 @@ export default function Home() {
         </Tooltip>
       </Corner>
 
-      <main className="mx-auto w-full max-w-6xl space-y-16 px-6 pt-40 pb-32">
+      <main>
+        <Container size="lg" className="space-y-16 pt-40 pb-32">
         <section className="space-y-4">
           <div className="flex items-baseline justify-between">
             <h2 className="text-lg font-medium">Button</h2>
@@ -80,7 +95,7 @@ export default function Home() {
             </code>
           </div>
 
-          <div className="space-y-6 rounded-xl bg-block p-8">
+          <Surface size="lg" className="space-y-6">
             <div className="flex flex-wrap items-center gap-3">
               <Button>Default</Button>
               <Button variant="outline">Outline</Button>
@@ -98,7 +113,7 @@ export default function Home() {
                 Trigger async
               </Button>
             </div>
-          </div>
+          </Surface>
         </section>
 
         <section className="space-y-4">
@@ -109,12 +124,12 @@ export default function Home() {
             </code>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
+          <Surface size="lg" className="flex flex-wrap items-center gap-3">
             <Badge>Default</Badge>
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="outline">Outline</Badge>
             <Badge variant="destructive">Destructive</Badge>
-          </div>
+          </Surface>
         </section>
 
         <section className="space-y-4">
@@ -125,7 +140,7 @@ export default function Home() {
             </code>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 rounded-xl bg-block p-8">
+          <Surface size="lg" className="flex flex-wrap items-center gap-3">
             <Tooltip content="Default tooltip on top">
               <Button variant="outline">Hover me</Button>
             </Tooltip>
@@ -135,8 +150,90 @@ export default function Home() {
             <Tooltip content="Right placement" side="right">
               <Button variant="outline">Right</Button>
             </Tooltip>
-          </div>
+          </Surface>
         </section>
+
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Copy</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/copy-command
+            </code>
+          </div>
+
+          <Surface size="lg" className="space-y-4">
+            <CopyCommand value="bunx shadcn@latest add @zyx1121/surface" />
+            <div className="flex items-center gap-2">
+              <code className="rounded-md bg-background px-3 py-2 font-mono text-sm">
+                claude-statusline
+              </code>
+              <CopyButton value="claude-statusline" label="Copy project name" />
+            </div>
+          </Surface>
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Segmented Control</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/segmented-control
+            </code>
+          </div>
+
+          <Surface size="lg" className="space-y-4">
+            <SegmentedControl
+              ariaLabel="Install mode"
+              value={segment}
+              onValueChange={setSegment}
+              options={[
+                { value: "shell", label: "Shell" },
+                { value: "claude", label: "Claude" },
+                { value: "manual", label: "Manual" },
+              ]}
+            />
+            <p className="text-sm text-foreground/60">
+              Current segment:{" "}
+              <span className="font-mono text-foreground">{segment}</span>
+            </p>
+          </Surface>
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-medium">Table</h2>
+            <code className="text-xs text-foreground/60">
+              bunx shadcn@latest add @zyx1121/table
+            </code>
+          </div>
+
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Primitive</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Shape</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-mono">surface</TableCell>
+                <TableCell>registry:block</TableCell>
+                <TableCell>rounded-xl + bg-block</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono">copy-command</TableCell>
+                <TableCell>registry:ui</TableCell>
+                <TableCell>rounded-md + copy action</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono">segmented-control</TableCell>
+                <TableCell>registry:ui</TableCell>
+                <TableCell>rounded-full + bg-block</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </section>
+        </Container>
       </main>
     </>
   )
