@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import { useTheme } from "next-themes";
 
 import { Container } from "@/registry/blocks/container";
 import { Corner } from "@/registry/blocks/corner";
@@ -36,12 +38,9 @@ function ZyxLogo({ className }: { className?: string }) {
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const [dark, setDark] = useState(false);
   const [segment, setSegment] = useState("shell");
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
+  const { resolvedTheme, setTheme } = useTheme();
+  const dark = resolvedTheme === "dark";
 
   const trigger = async () => {
     setLoading(true);
@@ -68,7 +67,7 @@ export default function Home() {
         >
           <Button
             variant="raw"
-            onClick={() => setDark((d) => !d)}
+            onClick={() => setTheme(dark ? "light" : "dark")}
             aria-label="Toggle theme"
             className="font-mono text-base"
           >
