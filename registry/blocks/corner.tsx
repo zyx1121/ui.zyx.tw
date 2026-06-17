@@ -18,6 +18,7 @@ export interface CornerProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Corner({ at, className, ...props }: CornerProps) {
   return (
     <div
+      data-slot="corner"
       className={cn("fixed z-50 p-6", positions[at], className)}
       {...props}
     />
