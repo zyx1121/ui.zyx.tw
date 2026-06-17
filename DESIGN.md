@@ -91,6 +91,6 @@ Before flipping to `items[]`: did you walk rules 1–4? If not, ship to `_drafts
 
 - **No composite content blocks.** Primitives compose at the call site, not in the registry.
 - **No border on surfaces.** Background contrast does the work.
-- **No raw hex / rgb in component files.** Always token-via-class. The whole point of `--block`, `--foreground`, etc. is that swapping themes shouldn't require touching component source.
+- **No raw hex / rgb in component files.** Always token-via-class. The whole point of `--block`, `--foreground`, etc. is that swapping themes shouldn't require touching component source. *Exception: overlay scrims (Dialog / Sheet / Popover backdrops) use `bg-black/NN` — a scrim must darken the page in **both** themes, so it deliberately does not theme-flip. This is the only sanctioned raw color.*
 - **No CSS-in-JS.** Tailwind utility classes only. The registry exists to ship plain `.tsx` files that drop into any shadcn project without bringing emotion/styled-components.
 - **No `class-variance-authority` unless variants actually justify it.** A 3-variant button doesn't need cva — a `Record<Variant, string>` lookup reads cleaner. Add cva when the variant matrix exceeds ~6 combinations.

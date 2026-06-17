@@ -9,8 +9,28 @@ import { Corner } from "@/registry/blocks/corner";
 import { Surface } from "@/registry/blocks/surface";
 import { Badge } from "@/registry/ui/badge";
 import { Button } from "@/registry/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/ui/card";
 import { CopyButton } from "@/registry/ui/copy-button";
 import { CopyCommand } from "@/registry/ui/copy-command";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/ui/dialog";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
 import { SegmentedControl } from "@/registry/ui/segmented-control";
 import {
   Table,
@@ -20,6 +40,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/ui/table";
+import { Textarea } from "@/registry/ui/textarea";
 import { Tooltip } from "@/registry/ui/tooltip";
 
 function ZyxLogo({ className }: { className?: string }) {
@@ -232,6 +253,90 @@ export default function Home() {
                 </TableRow>
               </TableBody>
             </Table>
+          </section>
+
+          <section className="space-y-4">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-lg font-medium">Form</h2>
+              <code className="text-xs text-foreground/60">
+                bunx shadcn@latest add @zyx1121/input @zyx1121/label
+              </code>
+            </div>
+
+            <Surface size="lg" className="grid max-w-sm gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="demo-email">Email</Label>
+                <Input
+                  id="demo-email"
+                  type="email"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="demo-msg">Message</Label>
+                <Textarea id="demo-msg" placeholder="Leave a comment..." />
+              </div>
+            </Surface>
+          </section>
+
+          <section className="space-y-4">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-lg font-medium">Card</h2>
+              <code className="text-xs text-foreground/60">
+                bunx shadcn@latest add @zyx1121/card
+              </code>
+            </div>
+
+            <Card className="max-w-sm">
+              <CardHeader>
+                <CardTitle>Component registry</CardTitle>
+                <CardDescription>
+                  Copy in, own outright. Every piece ships finished.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-foreground/80">
+                Borderless by design — separation comes from the block surface
+                color, not a stroke.
+              </CardContent>
+              <CardFooter>
+                <Button size="sm">Install</Button>
+                <Button size="sm" variant="ghost">
+                  Docs
+                </Button>
+              </CardFooter>
+            </Card>
+          </section>
+
+          <section className="space-y-4">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-lg font-medium">Dialog</h2>
+              <code className="text-xs text-foreground/60">
+                bunx shadcn@latest add @zyx1121/dialog
+              </code>
+            </div>
+
+            <Surface size="lg">
+              <Dialog>
+                <DialogTrigger
+                  render={<Button variant="outline">Open dialog</Button>}
+                />
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Delete project</DialogTitle>
+                    <DialogDescription>
+                      This permanently removes the project and everything in it.
+                      This action cannot be undone.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter>
+                    <DialogClose
+                      render={<Button variant="ghost">Cancel</Button>}
+                    />
+                    <DialogClose render={<Button>Delete</Button>} />
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </Surface>
           </section>
         </Container>
       </main>
