@@ -22,6 +22,7 @@ export function CopyButton({
   ...props
 }: CopyButtonProps) {
   const [copied, setCopied] = React.useState(false)
+  const [pending, setPending] = React.useState(false)
   const timeout = React.useRef<number | null>(null)
 
   React.useEffect(() => {
@@ -32,15 +33,19 @@ export function CopyButton({
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event)
-    if (event.defaultPrevented) return
+    if (event.defaultPrevented || pending) return
 
+    setPending(true)
     try {
       await navigator.clipboard.writeText(value)
       setCopied(true)
       if (timeout.current) window.clearTimeout(timeout.current)
       timeout.current = window.setTimeout(() => setCopied(false), 1500)
     } catch {
+      if (timeout.current) window.clearTimeout(timeout.current)
       setCopied(false)
+    } finally {
+      setPending(false)
     }
   }
 
@@ -48,6 +53,7 @@ export function CopyButton({
     <Button
       type="button"
       variant="raw"
+      loading={pending}
       aria-label={label ?? `Copy ${value}`}
       title={copied ? copiedLabel : label ?? "Copy"}
       data-copied={copied || undefined}
@@ -58,7 +64,7 @@ export function CopyButton({
       onClick={handleClick}
       {...props}
     >
-      {copied ? (
+      {pending ? null : copied ? (
         <Check aria-hidden className="size-4" />
       ) : (
         <Copy aria-hidden className="size-4" />
