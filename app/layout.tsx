@@ -13,8 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ui.zyx.tw"),
   title: "ui.zyx.tw",
   description: "Loki's component registry. Copy in, own outright.",
+  openGraph: {
+    title: "ui.zyx.tw",
+    description: "Loki's component registry. Copy in, own outright.",
+    url: "https://ui.zyx.tw",
+    siteName: "ui.zyx.tw",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -69,8 +69,8 @@ export function CopyButton({
       ) : (
         <Copy aria-hidden className="size-4" />
       )}
-      <span className="sr-only" aria-live="polite">
-        {copied ? copiedLabel : label ?? "Copy"}
+      <span className="sr-only" role="status" aria-live="polite">
+        {copied ? copiedLabel : ""}
       </span>
     </Button>
   )
