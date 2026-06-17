@@ -1,17 +1,17 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-type Size = "sm" | "default" | "lg"
+type Size = "sm" | "default" | "lg";
 
 const sizes: Record<Size, string> = {
   sm: "rounded-lg p-4",
   default: "rounded-xl p-6",
   lg: "rounded-2xl p-8",
-}
+};
 
 export interface SurfaceProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: Size
+  size?: Size;
 }
 
 export function Surface({
@@ -22,8 +22,12 @@ export function Surface({
   return (
     <div
       data-slot="surface"
-      className={cn("corner-token bg-block text-block-foreground", sizes[size], className)}
+      className={cn(
+        "bg-block text-block-foreground corner-token",
+        sizes[size],
+        className
+      )}
       {...props}
     />
-  )
+  );
 }

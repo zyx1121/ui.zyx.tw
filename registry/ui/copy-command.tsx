@@ -1,13 +1,13 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { CopyButton } from "./copy-button"
+import { cn } from "@/lib/utils";
+import { CopyButton } from "./copy-button";
 
 export interface CopyCommandProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string
-  prompt?: string
-  copyLabel?: string
-  multiline?: boolean
+  value: string;
+  prompt?: string;
+  copyLabel?: string;
+  multiline?: boolean;
 }
 
 export function CopyCommand({
@@ -22,19 +22,19 @@ export function CopyCommand({
     <div
       data-slot="copy-command"
       className={cn(
-        "corner-token flex items-start gap-2 rounded-md bg-block pl-4 pr-2 text-sm",
-        className,
+        "flex items-start gap-2 rounded-md bg-block pr-2 pl-4 text-sm corner-token",
+        className
       )}
       {...props}
     >
       <code
         className={cn(
           "min-w-0 flex-1 overflow-x-auto py-3 font-mono",
-          multiline ? "whitespace-pre-wrap break-words" : "whitespace-nowrap",
+          multiline ? "break-words whitespace-pre-wrap" : "whitespace-nowrap"
         )}
       >
         {prompt ? (
-          <span className="select-none text-foreground/50">{prompt} </span>
+          <span className="text-foreground/50 select-none">{prompt} </span>
         ) : null}
         {value}
       </code>
@@ -44,5 +44,5 @@ export function CopyCommand({
         className="mt-1.5 shrink-0"
       />
     </div>
-  )
+  );
 }
