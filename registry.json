@@ -54,7 +54,7 @@
       "title": "Copy Button",
       "description": "Icon button for clipboard copy actions. Small, async-safe, and built on the registry Button.",
       "dependencies": ["lucide-react"],
-      "registryDependencies": ["button"],
+      "registryDependencies": ["@zyx1121/button"],
       "files": [
         {
           "path": "registry/ui/copy-button.tsx",
@@ -69,7 +69,7 @@
       "title": "Copy Command",
       "description": "Token-driven command row with monospace text and a clipboard action. Use for shell snippets and install commands.",
       "dependencies": [],
-      "registryDependencies": ["copy-button"],
+      "registryDependencies": ["@zyx1121/copy-button"],
       "files": [
         {
           "path": "registry/ui/copy-command.tsx",
