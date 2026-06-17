@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
+import * as React from "react";
+import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export interface TooltipProps {
-  content: React.ReactNode
-  children: React.ReactElement
-  side?: "top" | "right" | "bottom" | "left"
-  sideOffset?: number
-  delay?: number
-  closeDelay?: number
-  className?: string
+  content: React.ReactNode;
+  children: React.ReactElement;
+  side?: "top" | "right" | "bottom" | "left";
+  sideOffset?: number;
+  delay?: number;
+  closeDelay?: number;
+  className?: string;
 }
 
 export function Tooltip({
@@ -38,7 +38,7 @@ export function Tooltip({
                 "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
                 "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
                 "data-[instant]:transition-none",
-                className,
+                className
               )}
             >
               {content}
@@ -47,5 +47,5 @@ export function Tooltip({
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
-  )
+  );
 }

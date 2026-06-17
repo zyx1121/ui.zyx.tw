@@ -1,16 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, Copy } from "lucide-react"
+import * as React from "react";
+import { Check, Copy } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "./button"
+import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
-export interface CopyButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
-  value: string
-  label?: string
-  copiedLabel?: string
+export interface CopyButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "value"
+> {
+  value: string;
+  label?: string;
+  copiedLabel?: string;
 }
 
 export function CopyButton({
@@ -21,33 +23,33 @@ export function CopyButton({
   onClick,
   ...props
 }: CopyButtonProps) {
-  const [copied, setCopied] = React.useState(false)
-  const [pending, setPending] = React.useState(false)
-  const timeout = React.useRef<number | null>(null)
+  const [copied, setCopied] = React.useState(false);
+  const [pending, setPending] = React.useState(false);
+  const timeout = React.useRef<number | null>(null);
 
   React.useEffect(() => {
     return () => {
-      if (timeout.current) window.clearTimeout(timeout.current)
-    }
-  }, [])
+      if (timeout.current) window.clearTimeout(timeout.current);
+    };
+  }, []);
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(event)
-    if (event.defaultPrevented || pending) return
+    onClick?.(event);
+    if (event.defaultPrevented || pending) return;
 
-    setPending(true)
+    setPending(true);
     try {
-      await navigator.clipboard.writeText(value)
-      setCopied(true)
-      if (timeout.current) window.clearTimeout(timeout.current)
-      timeout.current = window.setTimeout(() => setCopied(false), 1500)
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      if (timeout.current) window.clearTimeout(timeout.current);
+      timeout.current = window.setTimeout(() => setCopied(false), 1500);
     } catch {
-      if (timeout.current) window.clearTimeout(timeout.current)
-      setCopied(false)
+      if (timeout.current) window.clearTimeout(timeout.current);
+      setCopied(false);
     } finally {
-      setPending(false)
+      setPending(false);
     }
-  }
+  };
 
   return (
     <Button
@@ -55,11 +57,11 @@ export function CopyButton({
       variant="raw"
       loading={pending}
       aria-label={label ?? `Copy ${value}`}
-      title={copied ? copiedLabel : label ?? "Copy"}
+      title={copied ? copiedLabel : (label ?? "Copy")}
       data-copied={copied || undefined}
       className={cn(
         "size-8 rounded-full text-foreground/60 hover:bg-foreground/5 hover:text-foreground",
-        className,
+        className
       )}
       onClick={handleClick}
       {...props}
@@ -73,5 +75,5 @@ export function CopyButton({
         {copied ? copiedLabel : ""}
       </span>
     </Button>
-  )
+  );
 }
